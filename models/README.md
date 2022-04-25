@@ -11,5 +11,4 @@ npx sequelize-cli model:generate --name User --attributes fullname:string,id_car
 npx sequelize-cli model:generate --name Receipt --attributes book_id:integer,borrower_id:integer,staff_in_charge:string,start_borrowing:date,start_borrowing:date,status:string
 
 
-
 ```

@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Receipt.belongsTo(models.book)
-      Receipt.belongsTo(models.user)
+      Receipt.belongsTo(models.Book)
+      Receipt.belongsTo(models.User)
     }
   }
   Receipt.init({

@@ -17,6 +17,9 @@ module.exports = {
       author: {
         type: Sequelize.STRING
       },
+      publisher: {
+        type: Sequelize.STRING
+      },
       category: {
         type: Sequelize.INTEGER
       },
