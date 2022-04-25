@@ -12,6 +12,7 @@ receiptRoutes.post("/update", ReceiptController.update)
 receiptRoutes.get("/delete/:id", ReceiptController.destroy)
 
 // ----- Library apps -----
+receiptRoutes.get("/catalogues", ReceiptController.catalogPage)
 receiptRoutes.get("/borrow/page", ReceiptController.borrowBookPage)
 receiptRoutes.post("/borrow/new", ReceiptController.borrowBook)
 receiptRoutes.get("/return/page", ReceiptController.returnBookPage)

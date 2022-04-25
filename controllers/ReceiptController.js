@@ -107,10 +107,26 @@ class ReceiptController {
     }
 
     // --- fungsi untuk merender dan menampilkan halaman pengambilan buku ---
+    static async catalogPage(req, res){
+        try {
+            let result = await Book.findAll({
+                order: [
+                    ['id', 'asc']
+                ]
+            })
+
+            // res.json({books:result})
+            res.render('./receipt/katalog.ejs', {books:result})
+        } catch (err) {
+            res.json(err)
+        }
+    }
+
+    // --- fungsi untuk merender dan menampilkan halaman pengambilan buku ---
     static async borrowBookPage(req, res){
         try {
             
-            // res.render('./receipt/edit.ejs', {receipt: result})
+            res.render('./receipt/borrow.ejs')
         } catch (err) {
             res.json(err)
         }
@@ -141,7 +157,7 @@ class ReceiptController {
     static async returnBookPage(req, res){
         try {
 
-            // res.render('./receipt/edit.ejs', {receipt: result})
+            res.render('./receipt/return.ejs')
         } catch (err) {
             res.json(err)
         }

@@ -11,8 +11,8 @@ class BookController {
                 ]
             })
 
-            res.json({books:result})
-            // res.render('./book/index.ejs', {books:result})
+            // res.json({books:result})
+            res.render('./book/index.ejs', {books:result})
         } catch (err) {
             res.json(err)
         }

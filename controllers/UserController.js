@@ -11,8 +11,8 @@ class UserController {
                 ]
             })
 
-            res.json({users:result})
-            // res.render('./user/index.ejs', {users:result})
+            // res.json({users:result})
+            res.render('./user/index.ejs', {users:result})
         } catch (err) {
             res.json(err)
         }
