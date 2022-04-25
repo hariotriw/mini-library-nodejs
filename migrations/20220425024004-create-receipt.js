@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      book_id: {
+      BookId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Books',
@@ -17,7 +17,7 @@ module.exports = {
         onUpdate: 'cascade',
         onDelete: 'cascade'
       },
-      borrower_id: {
+      UserId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Users',
@@ -32,7 +32,7 @@ module.exports = {
       start_borrowing: {
         type: Sequelize.DATE
       },
-      start_borrowing: {
+      end_borrowing: {
         type: Sequelize.DATE
       },
       status: {

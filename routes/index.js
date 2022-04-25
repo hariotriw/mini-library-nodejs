@@ -7,9 +7,9 @@ route.get('/', (req, res) => {
 
 const bookRoutes = require('./book')
 const userRoutes = require('./user')
-// const receiptRoutes = require('./receipt')
+const receiptRoutes = require('./receipt')
 route.use('/books', bookRoutes)
 route.use('/users', userRoutes)
-// route.use('/receipts', receiptRoutes)
+route.use('/receipts', receiptRoutes)
 
 module.exports = route;
