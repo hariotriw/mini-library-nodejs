@@ -1,0 +1,32 @@
+{
+  "name": "mini-library-nodejs",
+  "version": "1.0.0",
+  "description": "This is mini project about library management web apps. This apps under developed using Node.js, Expressjs, Postgres and Bootstrap.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hariotriw/mini-library-nodejs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hariotriw/mini-library-nodejs/issues"
+  },
+  "homepage": "https://github.com/hariotriw/mini-library-nodejs#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.7",
+    "express": "^4.17.3",
+    "pg": "^8.7.3",
+    "sequelize": "^6.19.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "sequelize-cli": "^6.4.1"
+  }
+}
