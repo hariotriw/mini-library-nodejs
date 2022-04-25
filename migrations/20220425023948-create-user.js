@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       id_card: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       type_card: {
         type: Sequelize.STRING
