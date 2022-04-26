@@ -74,7 +74,7 @@
                         <p class="py-1 text-justify" >
                             PMA atau singkatan dari Perpustakaan Mini Andalan adalah suatu perpustakaan yang sedang beralih dan mengimplementasikan digitalisasi dalam pelayanannya. PMA ini memiliki beberapa layanan utama, seperti: <b>peminjaman buku</b>, <b>pengembalian buku</b>, <b>data katalog buku</b> yang terdapat di perpustakaan ini dan <b>layanan lainnya</b> yang sedang dikembangkan.
                         </p>
-                        <a href="/receipts"><button class="btn btn-success">< Kembali</button></a>
+                        <a href="/books"><button class="btn btn-success">< Kembali</button></a>
                     </div>
                     
                 </div>
@@ -88,7 +88,7 @@
                 <div class="col col-12">
                     <div class="p-1 rounded">
                         <!-- <h2>Selamat datang di Web Online Perpustakaan Mini si Wowo</h2> -->
-                        <h4 class="text-center mb-5">Peminjaman Buku</h4>
+                        <h4 class="text-center mb-5">Tambah Data Buku</h4>
                         <!-- <div class="text-center">
                             <a href="/books/createPage"><button class="btn btn-info text-center">+tambah</button></a>
                         </div> -->
@@ -96,36 +96,61 @@
                             <div class="col-8">
                                 <div class="card">
                                     <div class="card-header text-center">
-                                        <h5>Peminjaman</h5>
+                                        <h5>Buku baru</h5>
                                     </div>
-                                    <form method="post" action="/receipts/borrow/new">
+                                    <form method="post" action="/books/create">
                                         <div class="card-body py-5">
                                             <div class="mb-3 row">
-                                                <label for="BookId" class="col-sm-3 col-form-label">Buku yang dipinjam</label>
+                                                <label for="title" class="col-sm-3 col-form-label">Judul</label>
                                                 <div class="col-sm-9">
-                                                    <select name="BookId" class="form-select form-select-sm" aria-label=".form-select-sm example" required>
-                                                        <option value="" selected disabled>Masukkan judul buku...</option>
-                                                        <% books.forEach((book, i) => { %>
-                                                            <option value="<%= book.id %>"><%= i+1 %>. <%= book.title %></option>
-                                                        <% }) %>
+                                                    <input type="text" class="form-control" name="title" required>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label for="alt_title" class="col-sm-3 col-form-label">Judul Alternatif</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" name="alt_title" required>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label for="author" class="col-sm-3 col-form-label">Penulis</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" name="author" required>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label for="publisher" class="col-sm-3 col-form-label">Penerbit</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" name="publisher">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label for="kategori" class="col-sm-3 col-form-label">Kategori</label>
+                                                <div class="col-sm-9">
+                                                    <select name="category" class="form-select form-select-sm" aria-label=".form-select-sm example" required>
+                                                        <option value="" selected disabled>Masukkan kategori buku...</option>
+                                                        <option value="1">Ensiklopedia</option>
+                                                        <option value="2">Pelajaran</option>
+                                                        <option value="3">Life Story / Biografi</option>
+                                                        <option value="4">Kesehatan</option>
+                                                        <option value="5">Keuangan</option>
+                                                        <option value="6">Makanan & Minuman</option>
+                                                        <option value="7">Novel</option>
+                                                        <option value="8">Komik</option>
+                                                        <option value="9">Lainnya..</option>
                                                       </select>
                                                 </div>
                                             </div>
                                             <div class="mb-3 row">
-                                                <label for="UserId" class="col-sm-3 col-form-label">Pelanggan yang meminjam</label>
+                                                <label for="bookshelf_code" class="col-sm-3 col-form-label">Kode Rak Buku</label>
                                                 <div class="col-sm-9">
-                                                    <select name="UserId" class="form-select form-select-sm" aria-label=".form-select-sm example" required>
-                                                        <option value="" selected disabled>Masukkan nama pelanggan...</option>
-                                                        <% users.forEach((user, i) => { %>
-                                                            <option value="<%= user.id %>"><%= i+1 %>. <%= user.fullname %></option>
-                                                        <% }) %>
-                                                      </select>
+                                                    <input type="text" class="form-control" name="bookshelf_code" required>
                                                 </div>
                                             </div>
-                                            <div class="mb-3 row">
-                                                <label for="staff_in_charge" class="col-sm-3 col-form-label">Staff yang bertugas</label>
+                                            <div class="mb-1 row">
+                                                <label for="stock" class="col-sm-3 col-form-label">Stock</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="staff_in_charge" required>
+                                                    <input type="number" class="form-control" name="stock" required>
                                                 </div>
                                             </div>
                                         </div>

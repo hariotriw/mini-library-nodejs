@@ -28,14 +28,9 @@
         .text-justify {
             text-align: justify;
         }
-        .same-line-head {
+        .same-line {
             line-height: 1.5em;
-            height: 5.3em;       /* height is 2x line-height, so two lines will display */
-            overflow: hidden;
-        }
-        .same-line-body {
-            line-height: 1.5em;
-            height: 18em;       /* height is 2x line-height, so two lines will display */
+            height: 14em;       /* height is 2x line-height, so two lines will display */
             overflow: hidden;
         }
         body {
@@ -79,7 +74,7 @@
                         <p class="py-1 text-justify" >
                             PMA atau singkatan dari Perpustakaan Mini Andalan adalah suatu perpustakaan yang sedang beralih dan mengimplementasikan digitalisasi dalam pelayanannya. PMA ini memiliki beberapa layanan utama, seperti: <b>peminjaman buku</b>, <b>pengembalian buku</b>, <b>data katalog buku</b> yang terdapat di perpustakaan ini dan <b>layanan lainnya</b> yang sedang dikembangkan.
                         </p>
-                        <a href="/"><button class="btn btn-success">< Kembali</button></a>
+                        <a href="/users"><button class="btn btn-success">< Kembali</button></a>
                     </div>
                     
                 </div>
@@ -87,61 +82,56 @@
         </section>
     </div>
 
-    <section class="bg-greenyellow" id="available-apps" style="min-height: 800px; height: wrap-content;">
+    <section class="bg-greenyellow" id="available-apps" style="min-height: 800px;">
         <div class="container py-5" >
             <div class="row justify-content-center">
                 <div class="col col-12">
                     <div class="p-1 rounded">
                         <!-- <h2>Selamat datang di Web Online Perpustakaan Mini si Wowo</h2> -->
-                        <h4 class="text-center mb-5">Katalog Buku</h4>
-                       
-                        <div class="row pb-3">
-                            <% books.forEach(book => { %>
-
-                            
-                            <div class="col-3">
-                                <div class="card my-4">
-                                    <div class="card-header same-line-head bg-forestgreen text-center fs-6">
-                                        <b><%= book.title %></b>
+                        <h4 class="text-center mb-5">Ubah Data Pelanggan</h4>
+                        <!-- <div class="text-center">
+                            <a href="/books/createPage"><button class="btn btn-info text-center">+tambah</button></a>
+                        </div> -->
+                        <div class="row pb-3 justify-content-center">
+                            <div class="col-8">
+                                <div class="card">
+                                    <div class="card-header text-center">
+                                        <h5>Ubah pelanggan</h5>
                                     </div>
-                                    <div class="card-body py-2 same-line-body bg-limegreen fs-6 ">
-                                        <div class="row">
-                                            <p class="my-0">penulis:</p>
-                                            <p class="text-end my-0"><%= book.author %></p>
+                                    <form method="post" action="/users/update">
+                                        <input type="hidden" name="id" value="<%= user.id %>" readonly>
+                                        <div class="card-body py-5">
+                                            <div class="mb-3 row">
+                                                <label for="fullname" class="col-sm-3 col-form-label">Nama</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" name="fullname" value="<%= user.fullname %>" required>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label for="id_card" class="col-sm-3 col-form-label">Kartu Id</label>
+                                                <div class="col-sm-9">
+                                                    <input type="number" class="form-control" name="id_card" value="<%= user.id_card %>" required>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label for="type_card" class="col-sm-3 col-form-label">Tipe Kartu</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" name="type_card" value="<%= user.type_card %>" required>
+                                                </div>
+                                            </div>
+                                            
+                                        <div class="card-footer text-end">
+                                            <button type="submit" class="btn btn-primary">submit</a>
                                         </div>
-                                        <div class="row">
-                                            <p class="my-0">penerbit:</p>
-                                            <p class="text-end my-0"><%= book.publisher %></p>
-                                        </div>
-                                        <div class="row">
-                                            <p class="my-0">kategori:</p>
-                                            <p class="text-end my-0"><%= book.category %></p>
-                                        </div>
-                                        <div class="row">
-                                            <p class="my-0">kode rak buku:</p>
-                                            <p class="text-end my-0"><%= book.bookshelf_code %></p>
-                                        </div>
-                                        <div class="row">
-                                            <p class="my-0">Stok buku:</p>
-                                            <p class="text-end my-0"><%= book.stock %></p>
-                                        </div>
-                                    </div>
-                                    <!-- <div class="card-footer p-0 text-end">
-                                        <a class="no-link" href="/books">
-                                            <button class="btn bg-dodgerblue w-100">
-                                                <b>klik disini</b>
-                                            </button>
-                                        </a>
-                                    </div> -->
+                                    </form>
                                 </div>
+                                
                             </div>
-                            <% }) %>
                         </div>
                       </div>
                 </div>
               </div>
         </div>
-        <div style="clear: both;"></div>
     </section>
     
     <!-- JavaScript Bundle with Popper -->

@@ -39,8 +39,8 @@ class UserController {
                 fullname, id_card, type_card
             })
 
-            res.json(result)
-            // res.redirect('/users', result)
+            // res.json(result)
+            res.redirect('/users')
             
         } catch (err) {
             res.json(err)
@@ -73,8 +73,8 @@ class UserController {
             let id = req.params.id
             let result = await User.findByPk(id);
 
-            res.json({user: result})
-            // res.render('./user/edit.ejs', {user: result})
+            // res.json({user: result})
+            res.render('./user/edit.ejs', {user: result})
         } catch (err) {
             res.json(err)
         }
@@ -95,7 +95,7 @@ class UserController {
                 }
             })
 
-            res.json(result)
+            res.redirect('/users')
         } catch (err) {
             res.json(err)
         }
@@ -112,7 +112,7 @@ class UserController {
                 }
             })
 
-            res.json(result)
+            res.redirect('/users')
             
         } catch (err) {
             res.json(err)

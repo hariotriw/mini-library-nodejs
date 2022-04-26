@@ -74,6 +74,7 @@
                         <p class="py-1 text-justify" >
                             PMA atau singkatan dari Perpustakaan Mini Andalan adalah suatu perpustakaan yang sedang beralih dan mengimplementasikan digitalisasi dalam pelayanannya. PMA ini memiliki beberapa layanan utama, seperti: <b>peminjaman buku</b>, <b>pengembalian buku</b>, <b>data katalog buku</b> yang terdapat di perpustakaan ini dan <b>layanan lainnya</b> yang sedang dikembangkan.
                         </p>
+                        <a href="/receipts"><button class="btn btn-success">< Kembali</button></a>
                     </div>
                     
                 </div>
@@ -84,85 +85,52 @@
     <section class="bg-greenyellow" id="available-apps" style="min-height: 800px;">
         <div class="container py-5" >
             <div class="row justify-content-center">
-                <div class="col col-10">
+                <div class="col col-12">
                     <div class="p-1 rounded">
                         <!-- <h2>Selamat datang di Web Online Perpustakaan Mini si Wowo</h2> -->
-                        <h4 class="text-center mb-5">Pelayanan yang tersedia</h4>
-                        <div class="row pb-3">
-                            <div class="col-3">
-                                <div class="card ">
-                                    <div class="card-header bg-forestgreen text-center">
-                                        <b>Kelola Buku</b>
-                                    </div>
-                                    <div class="card-body same-line  bg-limegreen py-3 fs-6 ">
-                                        <p class="text-justify">Halaman kelola buku untuk melakukan manajemen terhadap data buku di perpustakaan</p>
-                                    </div>
-                                    <div class="card-footer p-0 text-end">
-                                        <a class="no-link" href="/books">
-                                            <button class="btn bg-dodgerblue w-100">
-                                                <b>klik disini</b>
-                                            </button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="card ">
-                                    <div class="card-header bg-forestgreen text-center">
-                                        <b>Katalog Buku</b>
-                                    </div>
-                                    <div class="card-body same-line  bg-limegreen py-3 fs-6">
-                                        <p class="text-justify">Katalog buku berisi daftar buku yang terdaftar dalam perpustakaan ini. Pelanggan juga dapat melihat stok dan tata letak buku tersebut di dalam perpustakaan ini.</p>
-                                    </div>
-                                    <div class="card-footer p-0 text-end">
-                                        <a class="no-link" href="/receipts/catalogues/">
-                                            <button class="btn bg-dodgerblue w-100">
-                                                <b>klik disini</b>
-                                            </button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="card ">
-                                    <div class="card-header bg-forestgreen text-center">
-                                        <b>Peminjaman Buku</b>
-                                    </div>
-                                    <div class="card-body same-line  bg-limegreen py-3 fs-6">
-                                        <p class="text-justify">Halaman peminjaman buku untuk petugas perpustakaan yang berjaga dan menerima permintaan pelanggan yang ingin meminjam buku.</p>
-                                    </div>
-                                    <div class="card-footer p-0 text-end">
-                                        <a class="no-link" href="/receipts/borrow/page">
-                                            <button class="btn bg-dodgerblue w-100">
-                                                <b>klik disini</b>
-                                            </button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="card ">
-                                    <div class="card-header bg-forestgreen text-center">
-                                        <b>Pengembalian Buku</b>
-                                    </div>
-                                    <div class="card-body same-line  bg-limegreen py-3 fs-6">
-                                        <p class="text-justify">Halaman pengembalian buku untuk petugas perpustakaan yang berjaga dan menerima permintaan pelanggan yang ingin mengembalikan buku.</p>
-                                    </div>
-                                    <div class="card-footer p-0 text-end">
-                                        <a class="no-link" href="/receipts/return/page">
-                                            <button class="btn bg-dodgerblue w-100">
-                                                <b>klik disini</b>
-                                            </button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <!-- <div class="button-area text-center">
-                            <button class="btn btn-light me-4"><a href="/pirates"> to Pirates list</a></button>
-                            <button class="btn btn-light "><a href="/ships"> to Ships list</a></button>
+                        <h4 class="text-center mb-5">Pengembalian Buku</h4>
+                        <!-- <div class="text-center">
+                            <a href="/books/createPage"><button class="btn btn-info text-center">+tambah</button></a>
                         </div> -->
+                        <div class="row pb-3 justify-content-center">
+                            <div class="col-8">
+                                <div class="card">
+                                    <div class="card-header text-center">
+                                        <h5>Pengembalian</h5>
+                                    </div>
+                                    <form method="post" action="/receipts/return/new">
+                                        <div class="card-body py-5">
+                                            <div class="mb-3 row">
+                                                <label for="BookId" class="col-sm-3 col-form-label">Buku yang dikembalikan</label>
+                                                <div class="col-sm-9">
+                                                    <select name="BookId" class="form-select form-select-sm" aria-label=".form-select-sm example" required>
+                                                        <option value="" selected disabled>Masukkan judul buku...</option>
+                                                        <% books.forEach((book, i) => { %>
+                                                            <option value="<%= book.id %>"><%= i+1 %>. <%= book.title %></option>
+                                                        <% }) %>
+                                                      </select>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label for="UserId" class="col-sm-3 col-form-label">Pelanggan yang mengembalikan</label>
+                                                <div class="col-sm-9">
+                                                    <select name="UserId" class="form-select form-select-sm" aria-label=".form-select-sm example" required>
+                                                        <option value="" selected disabled>Masukkan nama pelanggan...</option>
+                                                        <% users.forEach((user, i) => { %>
+                                                            <option value="<%= user.id %>"><%= i+1 %>. <%= user.fullname %></option>
+                                                        <% }) %>
+                                                      </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer text-end">
+                                            <button type="submit" class="btn btn-primary">submit</a>
+                                        </div>
+                                    </form>
+                                </div>
+                                
+                            </div>
+                        </div>
                       </div>
                 </div>
               </div>

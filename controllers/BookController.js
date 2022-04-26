@@ -39,8 +39,7 @@ class BookController {
                 title, alt_title, author, publisher, category, bookshelf_code, stock
             })
 
-            res.json(result)
-            // res.redirect('/books', result)
+            res.redirect('/books')
             
         } catch (err) {
             res.json(err)
@@ -59,8 +58,8 @@ class BookController {
             let result = await Book.findByPk(id);
             // console.log(result)
 
-            res.json({book: result})
-            // res.render('./book/show.ejs', {book: result})
+            // res.json({book: result})
+            res.render('./book/show.ejs', {book: result})
             
         } catch (err) {
             res.json(err)
@@ -73,8 +72,8 @@ class BookController {
             let id = req.params.id
             let result = await Book.findByPk(id);
 
-            res.json({book: result})
-            // res.render('./book/edit.ejs', {book: result})
+            // res.json({book: result})
+            res.render('./book/edit.ejs', {book: result})
         } catch (err) {
             res.json(err)
         }
@@ -116,7 +115,7 @@ class BookController {
                 }
             })
 
-            res.json(result)
+            res.redirect('/books')
             
         } catch (err) {
             res.json(err)
