@@ -99,6 +99,7 @@
                                         <h5>Ubah Buku</h5>
                                     </div>
                                     <form method="post" action="/books/update">
+                                        <input type="hidden" name="id" value="<%= book.id %>" readonly>
                                         <div class="card-body py-5">
                                             <div class="mb-3 row">
                                                 <label for="title" class="col-sm-3 col-form-label">Judul</label>
@@ -130,15 +131,11 @@
                                                     <select name="category" class="form-select form-select-sm" aria-label=".form-select-sm example" required>
 
                                                         <option value="" disabled>Open this select menu</option>
-                                                        <%
-                                                        let attr = ["Ensiklopedia", "Pelajaran", "Life Story / Biografi", "Kesehatan", "Keuangan", "Makanan & Minuman", "Novel", "Komik", "Lainnya.."]
-                                                        for ( let i = 0; i < 9; i++ )
-                                                        {
-                                                            let selected = ( book.category == i+1 ) ? "selected" : "";%>
-                                                            <option value="<%= book.category %>" <%=selected %>><%=attr[i] %></option><%
-                                                        }
-                                                        %>
+                                                        
 
+                                                        <% categories.forEach(category => { %>
+                                                            <option value="<%= category.id %>" <%= category.id === book.CategoryId ? "selected" : "" %>><%= category.name %></option>
+                                                        <% }) %>
 
                                                         
                                                         <!-- <option value="1">Ensiklopedia</option>

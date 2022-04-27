@@ -113,38 +113,7 @@
                                             <td><%= book.title %></td>
                                             <td><%= book.author %></td>
                                             <td><%= book.publisher %></td>
-                                            <% switch(book.category){
-                                                case 1: %>
-                                                    <td>ensiklopedia</td>
-                                                    <% break;
-                                                case 2: %>
-                                                    <td>pelajaran</td>
-                                                    <% break;
-                                                case 3: %>
-                                                    <td>biografi</td>
-                                                    <% break;
-                                                case 4: %>
-                                                    <td>kesehatan</td>
-                                                    <% break;
-                                                case 5: %>
-                                                    <td>keuangan</td>
-                                                    <% break;
-                                                case 6: %>
-                                                    <td>makanan</td>
-                                                    <% break;
-                                                case 7: %>
-                                                    <td>novel</td>
-                                                    <% break;
-                                                case 8: %>
-                                                    <td>komik</td>
-                                                    <% break;
-                                                case 9: %>
-                                                    <td>lainnya</td>
-                                                    <% break;
-                                                default: %>
-                                                    <td></td>
-                                                    <% break;
-                                            }%>
+                                            <td><%= book.Category.name %></td>
 
                                             <td><%= book.bookshelf_code %></td>
                                             <td><%= book.stock %></td>

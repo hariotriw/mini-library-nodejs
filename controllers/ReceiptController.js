@@ -1,4 +1,4 @@
-const {Receipt, Book, User} = require('../models')
+const {Receipt, Book, User, Category, Sequelize} = require('../models')
 
 class ReceiptController {
     
@@ -26,6 +26,7 @@ class ReceiptController {
     static async create(req, res){
         try {
             let arrbooks = await Book.findAll({
+                include: [Category],
                 order: [
                     ['id', 'asc']
                 ]
@@ -89,10 +90,27 @@ class ReceiptController {
     static async edit(req, res){
         try {
             let id = req.params.id
-            let result = await Receipt.findByPk(id);
+            let result = await Receipt.findAll({
+                where: {id:id},
+                attributes: {
+                    include: ['id']
+                }
+            });
+            let arrbooks = await Book.findAll({
+                include: [Category],
+                order: [
+                    ['id', 'asc']
+                ]
+            })
 
-            res.json({receipt: result})
-            // res.render('./receipt/edit.ejs', {receipt: result})
+            let arrUsers = await User.findAll({
+                order: [
+                    ['id', 'asc']
+                ]
+            })
+
+            // res.json({receipt: result[0]})
+            res.render('./receipt/edit.ejs', {receipt: result[0], books: arrbooks, users: arrUsers})
         } catch (err) {
             res.json(err)
         }
@@ -116,7 +134,8 @@ class ReceiptController {
                 }
             })
 
-            res.json(result)
+            // res.json(result)
+            res.redirect('/receipts')
         } catch (err) {
             res.json(err)
         }
@@ -126,6 +145,7 @@ class ReceiptController {
     static async catalogPage(req, res){
         try {
             let result = await Book.findAll({
+                include: [Category],
                 order: [
                     ['id', 'asc']
                 ]
@@ -142,6 +162,7 @@ class ReceiptController {
     static async borrowBookPage(req, res){
         try {
             let arrbooks = await Book.findAll({
+                include: [Category],
                 order: [
                     ['id', 'asc']
                 ]
@@ -175,6 +196,14 @@ class ReceiptController {
                 status: "dipinjam"
             })
 
+            await Book.update({
+                stock: Sequelize.literal(`stock - 1`)
+            },  { 
+                where: {
+                id: +BookId
+                }
+            })
+
             // res.json(result)
             res.redirect('/receipts')
         } catch (err) {
@@ -186,6 +215,7 @@ class ReceiptController {
     static async returnBookPage(req, res){
         try {
             let arrbooks = await Book.findAll({
+                include: [Category],
                 order: [
                     ['id', 'asc']
                 ]
@@ -216,6 +246,14 @@ class ReceiptController {
                 where: {
                     BookId: +BookId,
                     UserId: +UserId
+                }
+            })
+
+            await Book.update({
+                stock: Sequelize.literal(`stock + 1`)
+            },  { 
+                where: {
+                id: +BookId
                 }
             })
 

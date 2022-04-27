@@ -10,6 +10,8 @@ npx sequelize-cli model:generate --name User --attributes fullname:string,id_car
 
 npx sequelize-cli model:generate --name Receipt --attributes book_id:integer,borrower_id:integer,staff_in_charge:string,start_borrowing:date,end_borrowing:date,status:string
 
+npx sequelize-cli model:generate --name Category --attributes name:string
+
 
 ```
 

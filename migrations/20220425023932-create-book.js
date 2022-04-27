@@ -20,8 +20,14 @@ module.exports = {
       publisher: {
         type: Sequelize.STRING
       },
-      category: {
-        type: Sequelize.INTEGER
+      CategoryId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Categories',
+          key: 'id'
+        },
+        onUpdate: 'cascade',
+        onDelete: 'cascade'
       },
       bookshelf_code: {
         type: Sequelize.STRING

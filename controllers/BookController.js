@@ -1,4 +1,4 @@
-const {Book} = require('../models')
+const {Book, Category} = require('../models')
 
 class BookController {
     
@@ -6,6 +6,7 @@ class BookController {
     static async index(req, res){
         try {
             let result = await Book.findAll({
+                include: [Category],
                 order: [
                     ['id', 'asc']
                 ]
@@ -19,11 +20,16 @@ class BookController {
     }
     
     // --- fungsi untuk merender dan menampilkan form create ---
-    static create(req, res){
+    static async create(req, res){
         try {
+            let result = await Category.findAll({
+                order: [
+                    ['id', 'asc']
+                ]
+            })
 
             // res.json({});
-            res.render('./book/create.ejs');
+            res.render('./book/create.ejs', {categories: result});
             
         } catch (err) {
             res.json(err)
@@ -34,9 +40,10 @@ class BookController {
     static async store(req, res){
         try {
             let { title, alt_title, author, publisher, category, bookshelf_code, stock} = req.body;
+            let CategoryId = category || 9
 
             let result = await Book.create({
-                title, alt_title, author, publisher, category, bookshelf_code, stock
+                title, alt_title, author, publisher, CategoryId, bookshelf_code, stock
             })
 
             res.redirect('/books')
@@ -70,10 +77,19 @@ class BookController {
     static async edit(req, res){
         try {
             let id = req.params.id
-            let result = await Book.findByPk(id);
+            // let result = await Book.findByPk(id);
+            let result = await Book.findAll({
+                where: {id: id},
+                include: [Category]
+            });
+            let arrCategories = await Category.findAll({
+                order: [
+                    ['id', 'asc']
+                ]
+            })
 
-            // res.json({book: result})
-            res.render('./book/edit.ejs', {book: result})
+            // res.json({book: result[0], categories: arrCategories})
+            res.render('./book/edit.ejs', {book: result[0], categories: arrCategories})
         } catch (err) {
             res.json(err)
         }
@@ -89,7 +105,7 @@ class BookController {
                 alt_title: alt_title,
                 author: author,
                 publisher: publisher,
-                category: +category,
+                CategoryId: +category,
                 bookshelf_code: bookshelf_code,
                 stock: +stock
             }, {
@@ -98,7 +114,8 @@ class BookController {
                 }
             })
 
-            res.json(result)
+            // res.json(result)
+            res.redirect('/books')
         } catch (err) {
             res.json(err)
         }
