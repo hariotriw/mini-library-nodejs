@@ -1,33 +1,57 @@
 'use strict';
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
-
-     await queryInterface.bulkInsert('Categories', [
+  up: async (queryInterface, Sequelize) => {
+  await queryInterface.bulkInsert('Categories', [
        {
         name: 'ensiklopedia',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: 'pelajaran',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: 'life-story / biografi',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: 'kesehatan',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: 'keuangan',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: 'makanan & minuman',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: 'novel',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: 'komik',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: 'lainnya',
         createdAt: new Date(),
         updatedAt: new Date()
       }
     ], {});
   },
 
-  async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
-     await queryInterface.bulkDelete('Categories', null, {});
-  }
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.bulkDelete('User', null, {});
+  },
 };
