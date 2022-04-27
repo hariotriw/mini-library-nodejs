@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "postgres",
-    "password": "admin",
-    "database": "mini-library",
-    "host": "127.0.0.1",
+    "username": "nmkitjobfrmqwl",
+    "password": "62449c2d341ab4727c0dd21cc01fbd5ea22426f51ac83e9c1affc6c52f0d5ff2",
+    "database": "dea4q36qe19gll",
+    "host": "ec2-3-211-6-217.compute-1.amazonaws.com",
     "dialect": "postgres"
   }
 }
